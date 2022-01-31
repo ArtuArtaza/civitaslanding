@@ -1,0 +1,140 @@
+$yellow: #fcc930;
+.navigationbar {
+  width: 100%;
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  padding:1rem 0;
+  background-color: $yellow;
+  .burger {
+    padding: 1rem;
+    margin-right:1rem;
+    width: 35px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    align-self: flex-end;
+
+    span {
+      background-color: black;
+      position: absolute;
+      border-radius: 2px;
+      transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+      width: 100%;
+      height: 4px;
+    }
+
+    span:nth-child(1) {
+      top: 2px;
+      left: 0px;
+    }
+    span:nth-child(2) {
+      top: 14px;
+      left: 0px;
+    }
+    span:nth-child(3) {
+      bottom: 2px;
+      left: 0px;
+    }
+
+    &:not(.open):hover span:nth-child(1) {
+      transform: scaleY(1.2);
+      left: -5px;
+    }
+    &:not(.open):hover span:nth-child(2) {
+      transform: rotate(5deg) scaleY(1.1);
+    }
+    &:not(.open):hover span:nth-child(3) {
+      transform: scaleY(1.2);
+      left: 5px;
+    }
+    &.open span:nth-child(1) {
+      transform: rotate(45deg) scaleX(0.7);
+      top: 13px;
+      left: -8px;
+    }
+    &.open span:nth-child(2) {
+      transform: scale(0);
+      transition-duration: 50ms;
+    }
+    &.open span:nth-child(3) {
+      transform: rotate(-45deg) scaleX(0.7);
+      top: 13px;
+      left: 7px;
+    }
+  }
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    position: relative;
+    .menuContainer {
+      list-style: none;
+      padding: 0;
+      font-size: 1.2rem;
+      display: flex;
+      position: absolute;
+      width: 100%;
+      z-index:-1;  
+      flex-direction: column;
+    }
+    .links {
+      cursor: pointer;
+    }
+    .hidden {
+      top: -30rem;
+      transition: all 0.5s cubic-bezier(0, -0.03, 0.38, 0.62);
+      background-color: $yellow;
+    }
+    .show {
+      top: 0rem;
+      transition: all 0.5s cubic-bezier(0, -0.03, 0.38, 0.62);
+      background-color: $yellow;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navigationbar {
+    position: fixed;
+    z-index: 999;
+    padding: 0;
+    .burger {
+      display: none;
+    }
+    div:last-child {
+      .menuContainer {
+        top: 0;
+        flex-direction:row;
+        justify-content: space-between;
+        background-color:transparent;
+        padding:1rem 2rem;
+      }
+      .linkList {
+        display:flex;
+        gap:2rem;
+        transform:skew(-15deg);
+        padding:.5rem 2rem;
+        background-color: $yellow;
+        box-shadow: 5px 5px 0 rgba(0,0,0,1);
+        li {
+          transform:skew(15deg)
+        }
+      }
+      .playbuttonList {
+        transform:skew(-15deg);
+        background-color: $yellow;
+        padding:.5rem 2rem;
+        box-shadow: 5px 5px 0 rgba(0,0,0,1);
+        li {
+          transform:skew(15deg)
+        }
+      }
+    }
+  }
+}

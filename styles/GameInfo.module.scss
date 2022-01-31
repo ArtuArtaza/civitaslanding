@@ -1,0 +1,21 @@
+$yellow:#fcc930;
+$orange:#f29d25;
+$orangeRed:#c65a1a;
+.container {
+    min-height: 100vh;
+    padding:5rem;
+    overflow-x: hidden;
+    background-image:radial-gradient(circle at center,$orange, $orangeRed);
+    
+    .title {
+        font-size: 2rem;
+        text-transform: uppercase;
+        color:white;
+        text-shadow: 1px 5px 5px black;
+        margin-bottom:1rem;
+
+        span {
+            color: $yellow;
+        }
+    }
+}
